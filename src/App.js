@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/header/header';
+import Footer from './components/footer/footer';
+import Main from './main/main';
+import {useEffect, useState} from "react";
+import { get } from './components/httpClient/httpClient';
 
 function App() {
+const  [loggedIn, setLoggedIn] = useState(false);
+
+// useEffect(() => {
+//   get("login", true).then(setLoggedIn(true)).catch(isLoggedin(false))
+// }, [])
+
+const isLoggedin = (loggedIn) => {
+  setLoggedIn(loggedIn);
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header loggedIn={loggedIn} setLoggedIn={isLoggedin}/>
+      <Main loggedIn={loggedIn} setLoggedIn={isLoggedin}/>
+      <Footer loggedIn={loggedIn} setLoggedIn={isLoggedin}/>
     </div>
   );
 }
