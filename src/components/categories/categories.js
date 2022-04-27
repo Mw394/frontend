@@ -1,55 +1,67 @@
 import {useState} from "react";
 import {useEffect} from "react";
 import { get } from "../httpClient/httpClient";
-//import {useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import './categories.css';
+
 
 function Categories(props) {
     const [categories, setCategories] = useState({})
+
+    function buttons() {
+        return (
+            Object.entries(categories).map((element, count) => {
+                return (
+                    <tr key={count}>
+                        <td><button>{element[0] + " " + element[1] }</button></td>
+                    </tr>
+                )
+            })
+        )
+    }
 
     useEffect(() => {
         get("advertisement/categories", true, 9093).then((response) => {
           if (response.status == 200) {
             response.json().then((e) => {
               console.log(e)
+              setCategories(e.categoryHashMap)
+              console.log(categories)
             })
           }
         })
       }, [])
 
-    //const navigate = useNavigate()
-
-    return <div>
-
-    </div>
-    /*
-    if (props.loggedin) {
+    const navigate = useNavigate()
+    if (props.loggedIn) {
         return (
-            <>
+            <div id="categoryButtons">
                 <p>Categories</p>
-                <table>
-                    <tbody>
-                        
-                        {
-                           categories.map((element, i ) => {
-                            return (
-                                <tr key={i}>
-                                <td ><button onClick={() => navigate(`/categories/${Object.entries(element)[0][0].toLowerCase()}/advertisements`)}>{(Object.entries(element)[0][1])} {(Object.entries(element)[0][0])}</button></td>
-                                </tr>
-                            )
-                        })
-                        }
+                {
+                    buttons()
+                }
 
-                    </tbody>
-                </table>
-            </>
+            </div>
+                
+                
+
+            
         )
     }
     else {
         //window.location.href = "/"
         return null
     }
-    */
+    
 
 }
+
+
+
+/*
+                        {
+                            
+                        }
+                        */
 
 export default Categories
