@@ -1,7 +1,6 @@
 const domain = process.env.DOMAIN || "localhost";
-const port = process.env.PORT || 8087;
 
-export async function post(url, payload, credentials) {
+export async function post(url, payload, credentials, port) {
     const response = await fetch(`http://${domain}:${port}/${url}`, {
         method: "POST", 
         headers: {
@@ -12,12 +11,10 @@ export async function post(url, payload, credentials) {
         body: JSON.stringify(payload)
     }
     )
-    if (!response.ok) throw new Error(response.status)
-
-    return await response.json()
+    return response
 }
 
-export async function get(url, credentials) {
+export async function get(url, credentials, port) {
     const response = await fetch(`http://${domain}:${port}/${url}`, {
         method: "GET", 
         headers: {
@@ -26,7 +23,5 @@ export async function get(url, credentials) {
         credentials: credentials && "include",
     }
     )
-    if (!response.ok) throw new Error(response.status)
-
-    return await response.json()
+    return response
 }

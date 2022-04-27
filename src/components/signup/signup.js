@@ -1,6 +1,6 @@
 import {useState} from "react";
 import { post } from "../httpClient/httpClient";
-import {useNavigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 
 
 function SignUpPage() {
@@ -25,7 +25,14 @@ function SignUpPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-       post("signup", {userName: username, email: email, password: password}, true).then(navigate("/LoginPage")).catch((e) => console.log(e))         
+       post("auth/signUp", {userName: username, email: email, password: password}, true, 9092).then((response) => {
+        if (response.status == 200) {
+            alert("Sucessfully signed up")
+            navigate("/LoginPage")
+        } else {
+            alert("Failed to sign up")
+        }
+       })
     }
 
     return (

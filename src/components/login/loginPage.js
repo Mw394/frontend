@@ -12,7 +12,7 @@ function LoginPage(props) {
 
     const handleOnChange = (e) => {
         const {name, value} = e.target
-
+        
         if (name === "username") {
             setUsername(value);
         } else if (name === "password") {
@@ -22,12 +22,18 @@ function LoginPage(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.setLoggedIn(true);
-       post("login", getPayload(), true).then(navigate("/FrontPage")).catch((e) => console.log(e))         
+       post("auth/login", getPayload(), true, 9092).then((response) => {
+           if (response.status == 200) {
+                props.setLoggedIn(true);
+               navigate("FontPage")
+           } else {
+               alert("Failed to login")
+           }
+       })         
     }
 
     const getPayload = () => {
-        return {credential: username, password: password}
+        return {userName: username, password: password}
     }
 
     return (

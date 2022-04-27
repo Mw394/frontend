@@ -8,9 +8,22 @@ import { get } from './components/httpClient/httpClient';
 function App() {
 const  [loggedIn, setLoggedIn] = useState(false);
 
-// useEffect(() => {
-//   get("login", true).then(setLoggedIn(true)).catch(isLoggedin(false))
-// }, [])
+
+ useEffect(() => {
+   get("auth/loggedIn", true, 9092).then((response) =>  {
+     if (response.status == 200) {
+       response.json().then((e) => {
+         console.log(e)
+         if (e.loggedIn) {
+           setLoggedIn(true)
+         } else {
+           setLoggedIn(false)
+         }
+       })
+     }
+   })
+ }, [])
+ 
 
 const isLoggedin = (loggedIn) => {
   setLoggedIn(loggedIn);

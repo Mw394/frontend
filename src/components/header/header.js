@@ -18,6 +18,7 @@ function Header(props) {
                 <h1>You are signed in</h1>
                 <button onClick={handleLogOut}>Logout</button>
                 <Link to={"FrontPage"}><button>To fronpage</button> </Link>
+                <Link to={"categories"}><button>To categories</button> </Link>
             </div>
             )
     } else {
