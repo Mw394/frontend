@@ -6,11 +6,16 @@ function Header(props) {
     const navigate = useNavigate();
 
     const handleLogOut = () => {
-        get("logout", true).then(() => {
-            {props.setLoggedIn(false)
-            navigate("/")}
-        }).catch(() => console.log("Error"))
+        get("auth/logout", true, 9092).then((response) => {
+            if (response.status == 200) {
+                props.setLoggedIn(false)
+                navigate("LoginPage")
+            } else {
+                alert("Failed to logout")
+            }
+    })
     }
+
 
     if (props.loggedIn) {
         return (
