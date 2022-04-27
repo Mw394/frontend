@@ -1,21 +1,22 @@
-
-import { useEffect, useState } from "react"
-import { get } from "../../http/httpClient"
-import { Link, useNavigate } from "react-router-dom"
-
+import {useState} from "react";
+import {useEffect} from "react";
+import { get } from "../httpClient/httpClient";
+//import {useNavigate} from "react-router-dom";
 
 function Categories(props) {
-    const [categories, setCategories] = useState([])
-    useEffect((e) => {
-        get("categories", true, 9093).then((c) => {
-            console.log(c);
+    const [categories, setCategories] = useState({})
 
-            c.then((c) => {
-                setCategories(c)
+    useEffect(() => {
+        get("advertisement/categories", true, 9093).then((response) => {
+          if (response.status == 200) {
+            response.json().then((e) => {
+              console.log(e)
             })
-        }).catch(console.log("Error"))
-    }, [])
-    const navigate = useNavigate()
+          }
+        })
+      }, [])
+
+    //const navigate = useNavigate()
 
     return <div>
 
