@@ -13,7 +13,10 @@ function Categories(props) {
             Object.entries(categories).map((element, count) => {
                 return (
                     <tr key={count}>
-                        <td><button>{element[0] + " " + element[1] }</button></td>
+                        <td><button onClick={
+                            () => 
+                            navigate('/categories/ ' + element[0] + "/advertisements")
+                            }>{element[0] + " " + element[1] }</button></td>
                     </tr>
                 )
             })
@@ -42,10 +45,6 @@ function Categories(props) {
                 }
 
             </div>
-                
-                
-
-            
         )
     }
     else {
@@ -55,13 +54,5 @@ function Categories(props) {
     
 
 }
-
-
-
-/*
-                        {
-                            
-                        }
-                        */
 
 export default Categories

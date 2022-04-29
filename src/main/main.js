@@ -3,6 +3,7 @@ import LoginPage from "../components/login/loginPage";
 import Body from "../components/body/body";
 import SignUpPage from "../components/signup/signup";
 import Categories from "../components/categories/categories";
+import ShowAdvertisementList from "../components/advertisement/advertismentList";
 //import Categories from "../components/categories/categories";
 
 function Main(props) {
@@ -13,6 +14,7 @@ function Main(props) {
                 <Route path={"SignUp"} element={<SignUpPage/>}></Route>
                 <Route path={"/FrontPage"} element={<Body/>}></Route>
                 <Route path={"/Categories"} element={<Categories loggedIn={props.loggedIn}/>}></Route>
+                <Route path={"/Categories/:category/advertisements"} element={<ShowAdvertisementList loggedin={props.loggedin}/>} />
                 <Route path={"/*"} element={<Body/>}></Route>
             </Routes>
         </div>
