@@ -1,6 +1,7 @@
 const domain = process.env.DOMAIN || "localhost";
 
 export async function post(url, payload, credentials, port) {
+    console.log(url)
     const response = await fetch(`http://${domain}:${port}/${url}`, {
         method: "POST", 
         headers: {
@@ -15,7 +16,9 @@ export async function post(url, payload, credentials, port) {
 }
 
 export async function get(url, credentials, port) {
-    const response = await fetch(`http://${domain}:${port}/${url}`, {
+    const removeSpaces = str => str.replace(/\s/g, '');
+    var newUrl = removeSpaces(url)
+    const response = await fetch(`http://${domain}:${port}/${newUrl}`, {
         method: "GET", 
         headers: {
             "accept" : "application/json"

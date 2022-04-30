@@ -7,17 +7,16 @@ function ShowAdvertisementList(props) {
     const [advertisements, setAdvertisements] = useState()
 
     useEffect((e) => {
-        console.log(category)
-            get(`advertisement/get?category=${category}`, true, 9093).then((response) => {
-            if (response.status == 200) {
+        get("advertisement/get" + "?category=" + category,true,9093).then((response) => {
                 response.json().then((json) => {
+                    console.log(json)
                     setAdvertisements(json.advertisementList)
                 })
-            } else {
-                alert("Failed to get advertisements")
-            }
-        })
-    })
+        }).catch((e) => {
+            console.log(e)
+        } )
+    }, [advertisements])
+
 
     if (props.loggedIn) {
         if (advertisements.length == 0) {
@@ -41,9 +40,7 @@ function ShowAdvertisementList(props) {
             )
         }
     } else {
-        return (
-            <p>Please login in to view advertisements</p>
-        )
+        return null
     }
 
 }
