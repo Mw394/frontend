@@ -36,6 +36,7 @@ function Categories(props) {
       }, [])
 
     const navigate = useNavigate()
+    console.log(props.loggedIn)
     if (props.loggedIn) {
         return (
             <div id="categoryButtons">

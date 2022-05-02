@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 function ShowAdvertisementList(props) {
     const {category} = useParams()
-    const [advertisements, setAdvertisements] = useState()
+    const [advertisements, setAdvertisements] = useState([])
 
     useEffect((e) => {
         get("advertisement/get" + "?category=" + category,true,9093).then((response) => {
@@ -17,29 +17,22 @@ function ShowAdvertisementList(props) {
         } )
     }, [advertisements])
 
-
     if (props.loggedIn) {
-        if (advertisements.length == 0) {
-            <>
-            <p>There are no advertisments in this Category</p>
-            </>
-        } else {
             return (
                 <>
-                    <ul>
-                        {advertisements.map((element, i) => {
-                            return (
-                                <li key={i}>
-                                    <a >{Object.entries(element)[0][1]}</a>
-                                </li>
-                            )
-                        })}
-                    </ul>
+                     <ul>
+                    {advertisements.map((element, i) => {
+                        return(
+                        <li key={i}>
+                            <a>{element.headerText}</a>
+                        </li>)
+                    })}
+                </ul>
                 
                 </>
             )
         }
-    } else {
+     else {
         return null
     }
 

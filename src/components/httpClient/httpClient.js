@@ -26,5 +26,10 @@ export async function get(url, credentials, port) {
         credentials: credentials && "include",
     }
     )
+    if (!response.ok) throw new Error(response.status)
+
+    if (response.text.length === 0) {
+        return response
+    }
     return response
 }

@@ -14,7 +14,7 @@ function Main(props) {
                 <Route path={"SignUp"} element={<SignUpPage/>}></Route>
                 <Route path={"/FrontPage"} element={<Body/>}></Route>
                 <Route path={"/Categories"} element={<Categories loggedIn={props.loggedIn}/>}></Route>
-                <Route path={"/Categories/:category/advertisements"} element={<ShowAdvertisementList loggedin={props.loggedin}/>} />
+                <Route path={"/Categories/:category/advertisements"} element={<ShowAdvertisementList loggedIn={props.loggedIn}/>} />
                 <Route path={"/*"} element={<Body/>}></Route>
             </Routes>
         </div>
