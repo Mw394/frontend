@@ -16,7 +16,7 @@ function ShowAdvertisementList(props) {
         }).catch((e) => {
             console.log(e)
         } )
-    }, [advertisements])
+    }, [])
 
     if (props.loggedIn) {
             return (
@@ -26,7 +26,7 @@ function ShowAdvertisementList(props) {
                     {advertisements.map((element, i) => {
                         return(
                         <li key={i}>
-                            <a href={`/advertisement/${element.id.uuid}`}>{element.headerText + " | " + element.type}</a>
+                            <a href={`/advertisement/${element.id.uuid}`}>{element.headerText + " | " + element.price + " DKK"}</a>
                         </li>)
                     })}
                 </ul>

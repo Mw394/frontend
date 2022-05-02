@@ -8,7 +8,7 @@ function Header(props) {
     const handleLogOut = () => {
         get("auth/logout", true, 9092).then((response) => {
             if (response.status == 200) {
-                props.setLoggedIn(false)
+                props.isLoggedin(false)
                 navigate("LoginPage")
             } else {
                 alert("Failed to logout")

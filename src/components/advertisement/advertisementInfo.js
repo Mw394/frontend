@@ -16,8 +16,10 @@ function Advertisement(props) {
                 setAdvertisement(json.advertisement)
                 console.log(json.advertisement)
             })
-        })
-    })
+        }).catch((e) => {
+            console.log(e)
+        } )
+    }, [])
 
 
     if (props.loggedIn) {

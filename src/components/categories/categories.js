@@ -40,6 +40,7 @@ function Categories(props) {
     if (props.loggedIn) {
         return (
             <div id="categoryButtons">
+                <button onClick={() => navigate("/createAdvertisement")}>Create Ad</button>
                 <p>Categories</p>
                 {
                     buttons()

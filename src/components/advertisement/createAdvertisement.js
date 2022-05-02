@@ -37,15 +37,13 @@ function CreateAdvertisement(props) {
         else if (mobileErrors.length > 0) {
             alert("Ad failed to be created due to phone number being empty")
         }
-        else if (imgURLErrors.length > 0) {
-            alert("Ad failed to be created due to image URL being empty")
-        }
         else {
             e.preventDefault();
-            post("createAd", getPayload(), true, 8088).then((res) => {
-                res.json().then((resp) => {
-
-                    //navigate('/loggedIn')
+            post("advertisement/create", getPayload(), true, 9093).then((res) => {
+                res.json().then((json) => {
+                    console.log(json)
+                    navigate('/categories/ ' + category + "/advertisements")
+                    alert("Ad sucessfully created")
 
                 })
 

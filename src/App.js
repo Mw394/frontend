@@ -31,9 +31,9 @@ const isLoggedin = (loggedIn) => {
 
   return (
     <div className="App">
-      <Header loggedIn={loggedIn} setLoggedIn={isLoggedin}/>
-      <Main loggedIn={loggedIn} setLoggedIn={isLoggedin}/>
-      <Footer loggedIn={loggedIn} setLoggedIn={isLoggedin}/>
+      <Header loggedIn={loggedIn} isLoggedin={isLoggedin}/>
+      <Main loggedIn={loggedIn} isLoggedin={isLoggedin}/>
+      <Footer loggedIn={loggedIn} isLoggedin={isLoggedin}/>
     </div>
   );
 }
