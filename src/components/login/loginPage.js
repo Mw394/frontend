@@ -24,8 +24,8 @@ function LoginPage(props) {
         e.preventDefault();
        post("auth/login", getPayload(), true, 9092).then((response) => {
            if (response.status == 200) {
-                props.setLoggedIn(true);
-               navigate("FontPage")
+                navigate("/FontPage")
+                props.isLoggedin(true);
            } else {
                alert("Failed to login")
            }
