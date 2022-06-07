@@ -7,7 +7,7 @@ function Advertisement(props) {
     const {id} = useParams()
     const [advertisement, setAdvertisement] = useState([])
 
-    useEffect((e) => {
+    useEffect(() => {
         get("advertisement/getByID" + "?id=" + id, true, 9093).then((response) => {
             response.json().then((json) => {
                 if (json.advertisement.imgURL == null) {

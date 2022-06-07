@@ -9,6 +9,7 @@ function App() {
 const  [loggedIn, setLoggedIn] = useState(false);
 
 
+
  useEffect(() => {
    get("auth/loggedIn", true, 9092).then((response) =>  {
      if (response.status == 200) {
@@ -23,6 +24,7 @@ const  [loggedIn, setLoggedIn] = useState(false);
      }
    })
  }, [])
+ 
  
 
 const isLoggedin = (loggedIn) => {

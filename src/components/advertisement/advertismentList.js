@@ -7,7 +7,7 @@ function ShowAdvertisementList(props) {
     const [advertisements, setAdvertisements] = useState([])
     const navigate = useNavigate()
 
-    useEffect((e) => {
+    useEffect(() => {
         get("advertisement/get" + "?category=" + category,true,9093).then((response) => {
                 response.json().then((json) => {
                     console.log(json)
@@ -20,18 +20,17 @@ function ShowAdvertisementList(props) {
 
     if (props.loggedIn) {
             return (
-                <>
-                <button onClick={() => navigate("/createAdvertisement")}>Create Ad</button>
-                     <ul>
-                    {advertisements.map((element, i) => {
-                        return(
-                        <li key={i}>
-                            <a href={`/advertisement/${element.id.uuid}`}>{element.headerText + " | " + element.price + " DKK"}</a>
-                        </li>)
-                    })}
-                </ul>
-                
-                </>
+                <div>
+                    <button onClick={() => navigate("/createAdvertisement")}>Create Ad</button>
+                        <ul>
+                        {advertisements.map((element, i) => {
+                            return(
+                            <li key={i}>
+                                <a href={`/advertisement/${element.id.uuid}`}>{element.headerText + " | " + element.price + " DKK"}</a>
+                            </li>)
+                        })}
+                        </ul>
+                </div>
             )
         }
      else {
