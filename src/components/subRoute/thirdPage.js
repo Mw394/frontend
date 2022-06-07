@@ -1,4 +1,4 @@
-import {Link, Outlet, useLocation, useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 function ThirdPage() {
 

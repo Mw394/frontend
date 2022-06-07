@@ -1,8 +1,12 @@
 import {Link, Outlet, useLocation} from "react-router-dom"
 
+    /*
+    This function returns a coponent with a Link to a Outlet (aka a subroute)
+    */
 function FirstPage() {
 
     const location = useLocation()
+
 
     return(
         <div>
